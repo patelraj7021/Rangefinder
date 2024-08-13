@@ -1,5 +1,5 @@
 
-int photoPin = A0;
+int photoPin = A7;
 // ms_counts do not directly correlate to actual ms
 // due to clock differences between stock and 3rd party nano
 // 1 s on clock = 4 s irl
@@ -25,8 +25,8 @@ void setup() {
 void loop() {
   // put your main code here, to run repeatedly:
 
-  reading = analogRead(photoPin) - background_avg;
+  reading = analogRead(photoPin); //- background_avg;
   corrected_reading = max(reading, 0);
-  Serial.println(analogRead(photoPin), DEC);
-  delay(200);
+  Serial.println(corrected_reading, DEC);
+  delay(100);
 }
